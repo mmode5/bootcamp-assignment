@@ -1,0 +1,24 @@
+<div class="blog" *ngIf="blog">
+  <img [src]="blog.image" />
+  <div class="blog-info">
+    <div class="author-info">
+      <h3>{{ blog.author }}</h3>
+      <p>{{ blog.publish_date }}</p>
+    </div>
+    <h1>{{ blog.title }}</h1>
+    <div class="categories">
+      <app-categories
+        *ngFor="let category of blog.categories"
+        [category]="category"
+      ></app-categories>
+    </div>
+
+    <p class="blog-description">{{ blog.description }}</p>
+    <div class="more-info-link">
+      <a [routerLink]="['blog/', blog.id]">სრულად ნახვა</a>
+      <span>
+        <i class="fa-thin fa-arrow-up-right"></i>
+      </span>
+    </div>
+  </div>
+</div>

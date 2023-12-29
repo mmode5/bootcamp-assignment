@@ -1,0 +1,192 @@
+<header>
+  <img src="../../assets/photos/LOGO-02 3.png" alt="company logo" />
+</header>
+<div class="arrow-icon" [routerLink]="['']"><</div>
+<section *ngIf="form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h1>ბლოგის დამატება</h1>
+    <div class="img-container">
+      <label for="photo">ატვირთე ფოტო</label>
+      <input type="file" id="photo" (change)="onImagePicked($event)" />
+    </div>
+    <div class="mult-input-container input-container">
+      <div>
+        <label for="author">ავტორი *</label>
+
+        <input
+          type="text"
+          id="author"
+          formControlName="author"
+          [ngClass]="{
+            valid: form.controls['author']?.valid,
+            invalid:
+              form.controls['author']?.invalid && form.controls['author'].dirty
+          }"
+          placeholder="შეიყვანე ავტორი"
+          (input)="onInput()"
+          (blur)="onBlur()"
+        />
+
+        <div class="requirements">
+          <ul>
+            <li
+              [ngClass]="{
+                met:
+                  form.controls['author']?.dirty &&
+                  !form.controls['author'].hasError('minChar'),
+                'initial-color': !isTyping && form.controls['author']?.touched,
+                'invalid-req':
+                  form.controls['author']?.dirty &&
+                  form.controls['author'].hasError('minChar') &&
+                  !isTyping
+              }"
+            >
+              მინიმუმ 4 სიმბოლო
+            </li>
+
+            <li
+              [ngClass]="{
+                met:
+                  form.controls['author']?.dirty &&
+                  !form.controls['author'].hasError('minTwoWords'),
+                'initial-color': !isTyping && form.controls['author']?.touched,
+                'invalid-req':
+                  form.controls['author']?.dirty &&
+                  form.controls['author'].hasError('minTwoWords') &&
+                  !isTyping
+              }"
+            >
+              მინიმუმ ორი სიტყვა
+            </li>
+
+            <li
+              [ngClass]="{
+                met:
+                  form.controls['author']?.dirty &&
+                  !form.controls['author'].hasError('georgianChars'),
+                'initial-color': !isTyping && form.controls['author']?.touched,
+                'invalid-req':
+                  form.controls['author']?.dirty &&
+                  form.controls['author'].hasError('georgianChars') &&
+                  !isTyping
+              }"
+            >
+              მხოლოდ ქართული სიმბოლოები
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <label for="title">სათაური *</label>
+
+        <input
+          type="text"
+          id="title"
+          formControlName="title"
+          [ngClass]="{
+            valid: form.controls['title']?.valid,
+            invalid:
+              form.controls['title']?.invalid && form.controls['title'].dirty
+          }"
+          placeholder="შეიყვანე სათაური"
+          (input)="onInput()"
+          (blur)="onBlur()"
+        />
+
+        <div
+          class="requirements"
+          [ngClass]="{
+            met:
+              form.controls['title']?.dirty &&
+              !form.controls['title'].hasError('minChar'),
+            'initial-color': !isTyping && form.controls['title']?.touched,
+            'invalid-req':
+              form.controls['title']?.dirty &&
+              form.controls['title'].hasError('minChar') &&
+              !isTyping
+          }"
+        >
+          მინიმუმ 2 სიმბოლო
+        </div>
+      </div>
+    </div>
+    <div class="input-container">
+      <div class="big-input">
+        <label for="description">აღწერა *</label>
+
+        <input
+          id="description"
+          formControlName="description"
+          [ngClass]="{
+            valid: form.controls['description']?.valid,
+            invalid:
+              form.controls['description']?.invalid &&
+              form.controls['description'].dirty
+          }"
+          placeholder="შეიყვანეთ აღწერა"
+          (input)="onInput()"
+          (blur)="onBlur()"
+        />
+
+        <div
+          class="requirements"
+          [ngClass]="{
+            met:
+              form.controls['description']?.dirty &&
+              !form.controls['description'].hasError('minChar'),
+            'initial-color': !isTyping && form.controls['description']?.touched,
+            'invalid-req':
+              form.controls['description']?.dirty &&
+              form.controls['description'].hasError('minChar') &&
+              isTyping
+          }"
+        >
+          მინიმუმ 2 სიმბოლო
+        </div>
+      </div>
+    </div>
+    <div class="mult-input-container input-container">
+      <div>
+        <label for="publish_date">გამოქვეყნების თარიღი *</label>
+        <input type="date" id="publish_date" formControlName="publish_date" />
+      </div>
+
+      <div *ngIf="form" class="select">
+        <label for="multiselect">კატეგორია</label>
+        <ng-multiselect-dropdown
+          id="multiselect"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          formControlName="categories"
+          placeholder="შეიყვანეთ სათაური"
+        >
+        </ng-multiselect-dropdown>
+      </div>
+    </div>
+    <div class="mult-input-container input-container">
+      <div>
+        <label for="email">ელ-ფოსტა</label>
+        <input
+          id="email"
+          formControlName="email"
+          type="email"
+          (input)="onInput()"
+          (blur)="onBlur()"
+        />
+        <div
+          class="requirements"
+          *ngIf="
+            form.controls['email'].hasError('invalidRedberryEmail') &&
+            form.controls['email'].dirty &&
+            !isTyping
+          "
+        >
+          მეილი უნდა მთავრდებოდეს @redberry.ge-ით
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">გამოქვეყნება</button>
+  </form>
+</section>

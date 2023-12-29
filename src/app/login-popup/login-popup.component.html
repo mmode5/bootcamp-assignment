@@ -1,0 +1,41 @@
+<div class="popup-overlay" *ngIf="isVisible">
+  <div class="popup">
+    <span class="close" (click)="close()">&times;</span>
+    <!-- Your popup content goes here -->
+    <div class="user-Info">
+      <div>
+        <h2>შესვლა</h2>
+      </div>
+      <div *ngIf="form">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="mult-input-container input-container">
+            <div>
+              <label for="email">ელ-ფოსტა</label>
+              <input
+                id="email"
+                formControlName="email"
+                type="email"
+                (input)="onInput()"
+                (blur)="onBlur()"
+              />
+              <div
+                class="requirements"
+                *ngIf="
+                  form.controls['email'].hasError('invalidRedberryEmail') &&
+                  form.controls['email'].dirty &&
+                  !isTyping
+                "
+              >
+                მეილი უნდა მთავრდებოდეს @redberry.ge-ით
+              </div>
+              <!-- <div class="requirements" *ngIf="response.errors && !isTyping">
+                ელ-ფოსტა არ მოიძებნა
+              </div> -->
+            </div>
+          </div>
+          <button type="submit" [disabled]="form.invalid">შესვლა</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

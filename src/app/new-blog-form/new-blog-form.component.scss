@@ -1,0 +1,106 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white-color);
+  border-bottom: 1px solid var(--border-color);
+  height: 80px;
+  img {
+    height: 24px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+
+  form {
+    width: 600px;
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .img-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .input-container {
+      > div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 288px;
+
+        input {
+          height: 44px;
+          border: 1px solid rgba(228, 227, 235, 1);
+          border-radius: 12px;
+          background-color: rgba(252, 252, 253, 1);
+          padding-left: 10px;
+        }
+        input::placeholder {
+          color: rgba(133, 133, 141, 1);
+        }
+        .requirements {
+          color: rgba(133, 133, 141, 1);
+          li {
+            margin-left: 15px;
+          }
+        }
+      }
+      .big-input {
+        width: 100%;
+        input {
+          padding-bottom: 124px;
+        }
+      }
+    }
+  }
+}
+
+.mult-input-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.invalid {
+  border: 2px solid red !important;
+}
+.valid {
+  border: 2px solid green !important;
+}
+
+.met {
+  color: green;
+}
+
+.initial-color {
+  color: initial;
+}
+
+.invalid-req {
+  color: red !important;
+}
+
+.arrow-icon {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  top: 120px;
+  left: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  color: rgba(26, 26, 31, 1);
+  background-color: rgba(255, 255, 255, 1);
+  &:hover {
+    cursor: pointer;
+  }
+}

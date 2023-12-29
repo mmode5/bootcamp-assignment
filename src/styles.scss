@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@fortawesome/fontawesome-free/css/all.css";
+:root {
+  --btn-color: #5d37f3;
+  --btn-hover-color: #512be7;
+  --white-color: #ffffff;
+  --border-color: #e4e3eb;
+}
+@mixin alignment($k, $t) {
+  display: $k;
+  align-items: $t;
+}
+// .container {
+//   width: 1920px;
+//   height: 1080px;
+//   border: 1px solid black;
+// }
+
+body {
+  background-color: #f3f2fa;
+  margin: 0;
+}
+
+p,
+h1,
+ul,
+h3,
+h5,
+h2 {
+  margin: 0 !important;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.multiselect-dropdown .dropdown-btn {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  height: 32px;
+  border: 1px solid rgba(228, 227, 235, 1);
+  border-radius: 12px;
+  background-color: rgba(252, 252, 253, 1);
+  padding-left: 10px;
+}
+
+.multiselect-dropdown ::placeholder {
+  color: rgba(133, 133, 141, 1);
+}

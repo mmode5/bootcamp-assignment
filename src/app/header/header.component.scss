@@ -1,0 +1,31 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 76px 0px 76px;
+  background-color: var(--white-color);
+  border-bottom: 1px solid var(--border-color);
+  height: 80px;
+  img {
+    height: 24px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  button {
+    background-color: var(--btn-color);
+    color: var(--white-color);
+    border-radius: 8px;
+    width: 93px;
+    height: 40px;
+    padding: 10px 20px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    &:hover {
+      cursor: pointer;
+      background-color: var(--btn-hover-color);
+    }
+  }
+}
